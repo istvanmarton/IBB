@@ -166,6 +166,7 @@ void BranchandBound_L1_S(item_calc* second, int* lastRows, unsigned int* num_of_
 		unsigned int iCounter = 0;
 		double t;
 		t = omp_get_wtime();
+		progress_shared[thread_index] = 0;
 		unsigned long long int ulValue;
 	#endif
 
