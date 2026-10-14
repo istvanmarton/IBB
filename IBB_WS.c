@@ -450,7 +450,7 @@ void calc_L1(item_calc* second, int* num_of_threads){
 
 	#ifdef PROGRESS
 		unsigned int limit = second->iRows_reduced < 8 * sizeof(unsigned long long int) - 1 ? second->iRows_reduced : 8 * sizeof(unsigned long long int) - 1;
-		unsigned long long int one = 1, shared_numerator = 0, *progress_shared, denominator = second->iRows_reduced > limit ? one << limit : one << second->iRows_reduced;
+		unsigned long long int one = 1, shared_numerator = 0, *progress_shared, denominator = one << limit;
 		progress_shared = (unsigned long long int*) calloc(num_of_threads_curr, sizeof(unsigned long long int));
 	#endif
 
