@@ -184,7 +184,7 @@ void optional_arguments(item* first, item_calc* second, int* num_of_threads, int
 	set_optional_values(first, second);
 
 	for(i = *minimal_number_of_parameters; i < *argc; i++) {
-		if((strlen(argv[i]) == 1) && (argv[i][0] == 'r' || argv[i][0] == 'R' || argv[i][0] == 'c' || argv[i][0] == 'C' || argv[i][0] == 'n' || argv[i][0] == 'N')) {first->stat = argv[i][0]; }
+		if((strlen(argv[i]) == 1) && (argv[i][0] == 'r' || argv[i][0] == 'R' || argv[i][0] == 'c' || argv[i][0] == 'C' || argv[i][0] == 'n' || argv[i][0] == 'N' || argv[i][0] == 'y' || argv[i][0] == 'Y')) {first->stat = argv[i][0]; }
 		else {
 			ch = argv[i][0];
 			switch(ch) {
