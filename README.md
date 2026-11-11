@@ -34,11 +34,13 @@ command. In this case, the program will write out its progress as a percentage e
 
 	gcc -O3 -DMAX_NUM_OF_ROWS=num_of_rows -DMAX_NUM_OF_COLS=num_of_cols -DLONG -o IBB IBB.c -lm
 
-will compile the code using long long integers. As it was mentioned in the article, at the beginning the program adds the absolute values of every entry of the matrix. If this value can not be represented on a normal unsigned integer then the '-DLONG' flag should generally be used. However, if one conjectures that the $L_1$ norm of the matrix is smaller than or equal to $2^{NB-1}$ where $NB$ is the number of bits an 'int' is represented on than the line
+will compile the code using long long integers. As it was mentioned in the article, at the beginning the program adds the absolute values of every entry of the matrix. If this value can not be represented on a normal unsigned integer then the '-DLONG' flag should generally be used. However, if one assume that the $L_1$ norm of the matrix does not exceed $MAX_ALLOWED = 2^{NB-1}$, where $NB$ is the number of bits used to represent an 'int', then the line
 
 	second->max_value = INT_MAX;
 
-in the 'norm_limit' function in the "functions_IBB.h" file can be uncommented, and the code can be compiled without the -DLONG flag. If possible, compilation with the -DLONG flag should be avoided, as it significantly increases the program's execution time. As a practical example if one wants to compile the code for a matrix having 80 rows and 100 columns, wants the progress to be printed out every minute, and the entries of the matrix can not be represented with a normal integer, the code should be compiled with the following command:
+in the 'norm_limit' function in the "functions_IBB.h" file can be uncommented, allowing the code to be compiled without the '-DLONG' flag. One way to establish that the $L_1$ norm of the original matrix does not exceed 'MAX_ALLOWED' is to use the fact that it cannot exceed the sum of the $L_1$ norms of its partitioned matrices. To ensure that standard integer arithmetic can be used instead of long int arithmetic, two conditions must be satisfied: the sum of the absolute values of the entries of each partitioned matrix must not exceed 'MAX_ALLOWED', and the sum of the $L_1$ norms of all partitioned matrices must also remain within this limit. Under these conditions, the $L_1$ norm of the original matrix can be computed using standard integer arithmetic. If possible, compilation with the '-DLONG' flag should be avoided, as it significantly increases the program's execution time.
+
+As a practical example if one wants to compile the code for a matrix having 80 rows and 100 columns, wants the progress to be printed out every minute, and the entries of the matrix can not be represented with a normal integer, the code should be compiled with the following command:
 
 	gcc -O3 -DMAX_NUM_OF_ROWS=80 -DMAX_NUM_OF_COLS=100 -DPROGRESS -DPROG_SEC=60 -DLONG -o IBB IBB.c -lm
 
