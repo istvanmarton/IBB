@@ -34,7 +34,7 @@ command. In this case, the program will write out its progress as a percentage e
 
 	gcc -O3 -DMAX_NUM_OF_ROWS=num_of_rows -DMAX_NUM_OF_COLS=num_of_cols -DLONG -o IBB IBB.c -lm
 
-will compile the code using long long integers. As it was mentioned in the article, at the beginning the program adds the absolute values of every entry of the matrix. If this value can not be represented on a normal unsigned integer then the '-DLONG' flag should generally be used. However, if one assume that the $L_1$ norm of the matrix does not exceed $\text{MAX\_ALLOWED} = 2^{NB-1}$, where $NB$ is the number of bits used to represent an 'int', then the line
+will compile the code using long long integers. As it was mentioned in the article, at the beginning the program adds the absolute values of every entry of the matrix. If this value can not be represented on a normal unsigned integer then the '-DLONG' flag should generally be used. However, if one assume that the $L_1$ norm of the matrix does not exceed $\text{MAX_ALLOWED} = 2^{NB-1}$, where $NB$ is the number of bits used to represent an 'int', then the line
 
 	second->max_value = INT_MAX;
 
