@@ -24,6 +24,10 @@ A=load('M72x360.txt');
 b=load('strategy_L1_M72x360.txt');
 L1_M72x360=sum(abs(b' * A))
 
+A=load('M80x269.txt');
+b=load('strategy_L1_M80x269.txt');
+L1_M80x269=sum(abs(b' * A))
+
 A=load('M81x321.txt');
 b=load('strategy_L1_M81x321.txt');
 L1_M81x321=sum(abs(b' * A))
