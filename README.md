@@ -66,7 +66,7 @@ In the case of the first three optional parameters, the specifier must be follow
 
     ./IBB matrix.txt r40 c50 v4000 n
 
-means the calculation should be done with 40 rearranged rows. The number of coefficients is 50 meaning that from row 41 to row 50 the program will not rearrange the rows but will calculate the coefficients. The number of initial random vectors for the seesaw itertion is 4000 and the program will not preprocess the matrix. The optional arguments must not necessarily need to be written in that order, any of them can be omitted. In case any of the optional argument is omitted, it's value is set in the 'set_optional_values' function in the 'function_IBB.h' file.
+means the calculation should be done with 40 rearranged rows. The number of coefficients is 50 meaning that from row 41 to row 50 the program will not rearrange the rows but will calculate the coefficients. The number of initial random vectors for the seesaw itertion is 4000 and the program will not reduce the matrix. The optional arguments must not necessarily need to be written in that order, any of them can be omitted. In case any of the optional argument is omitted, it's value is set in the 'set_optional_values' function in the 'function_IBB.h' file.
 
 ### OpenMP
 
