@@ -172,8 +172,8 @@ void file_check(item* first, char* argv, char* msg){
 
 void calc_Parameters(item* first, item_calc *second, int* num_of_threads){
 
-	if(second->iRows_reduced > MAX_NUM_OF_ROWS) {printf("The number of rows of the preprocessed matrix is too large (%d). Please increase the MAX_NUM_OF_ROWS variable in the code to %d and compile and run it again.\n", second->iRows_reduced, second->iRows_reduced); exit(-1);}
-	if(second->iCols_reduced > MAX_NUM_OF_COLS) {printf("The number of columns of the preprocessed matrix is too large (%d). Please increase the MAX_NUM_OF_COLS variable in the code to %d and compile and run it again.\n", second->iCols_reduced, second->iCols_reduced); exit(-1);}
+	if(second->iRows_reduced > MAX_NUM_OF_ROWS) {printf("The number of rows of the reduced matrix is too large (%d). Please increase the MAX_NUM_OF_ROWS variable in the code to %d and compile and run it again.\n", second->iRows_reduced, second->iRows_reduced); exit(-1);}
+	if(second->iCols_reduced > MAX_NUM_OF_COLS) {printf("The number of columns of the reduced matrix is too large (%d). Please increase the MAX_NUM_OF_COLS variable in the code to %d and compile and run it again.\n", second->iCols_reduced, second->iCols_reduced); exit(-1);}
 }
 
 void optional_arguments(item* first, item_calc* second, int* num_of_threads, int* argc, char** argv, int* minimal_number_of_parameters){
