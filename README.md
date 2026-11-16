@@ -22,7 +22,7 @@ command, where 'num_of_rows' and 'num_of_cols' are standing for the maximum numb
 
 	gcc -O3 -DMAX_NUM_OF_ROWS=63 -DMAX_NUM_OF_COLS=63 -o IBB IBB.c -lm
 
-compiles the code with a maximum number of rows and columns of 63. In the absence of this information, the maximum number of rows and columns will be the value defined in the "functions_IBB.h" header file by '#define MAX_NUM_OF_ROWS' and '#define MAX_NUM_OF_COLS' respectively. It is recommended to compile the code with exactly the number of rows and columns the matrix has as it entails with performance gain compared to the situation when the compilation is performed with bigger number of rows or columns than what is needed. When the number of rows or columns are smaller than the size of the preprocessed matrix, the program will terminate without calculating the result and with an error message 'The number of rows/columns of the preprocessed matrix is too large (num_of_rows/num_of_cols). Please increase the MAX_NUM_OF_ROWS/MAX_NUM_OF_COLS variable in the code to num_of_rows/num_of_cols and compile and run it again.'. Please note that if the number of rows of the matrix 'n' exceeds its number of columns 'm', then the program will transposes the matrix automatically, and if the code was compiled with 'num_of_rows = n' and 'num_of_cols = m', the program will terminate with the error message indicating that the number of columns is bigger than what the program can deal with. In case it is important to know the progress of the program, the compilation should be done with the
+compiles the code with a maximum number of rows and columns of 63. In the absence of this information, the maximum number of rows and columns will be the value defined in the "functions_IBB.h" header file by '#define MAX_NUM_OF_ROWS' and '#define MAX_NUM_OF_COLS' respectively. It is recommended to compile the code with exactly the number of rows and columns the matrix has as it entails with performance gain compared to the situation when the compilation is performed with bigger number of rows or columns than what is needed. When the number of rows or columns are smaller than the size of the reduced matrix, the program will terminate without calculating the result and with an error message 'The number of rows/columns of the reduced matrix is too large (num_of_rows/num_of_cols). Please increase the MAX_NUM_OF_ROWS/MAX_NUM_OF_COLS variable in the code to num_of_rows/num_of_cols and compile and run it again.'. Please note that if the number of rows of the matrix 'n' exceeds its number of columns 'm', then the program will transposes the matrix automatically, and if the code was compiled with 'num_of_rows = n' and 'num_of_cols = m', the program will terminate with the error message indicating that the number of columns is bigger than what the program can deal with. In case it is important to know the progress of the program, the compilation should be done with the
 
 	gcc -O3 -DMAX_NUM_OF_ROWS=num_of_rows -DMAX_NUM_OF_COLS=num_of_cols -DPROGRESS -o IBB IBB.c -lm
 
@@ -55,8 +55,8 @@ The program can also be invoked with optional arguments, that control the
  + number of rearranged rows (specifier: 'r' or 'R'),
  + the number of coefficients, namely the number of rows for which the program will determine the coefficients without rearranging those rows (specifier: 'c' or 'C'),
  + the number of initial random vectors for seesaw iteration (specifier: 'v' or 'V'),
- + and the preprocessing of the matrix before the actual computation.
-In the case of the first three optional parameters, the specifier must be followed by a number. The value of the argument controlling the preprocessing of the matrix must be a single character and it's value can be
+ + and the reduction of the matrix before the actual computation.
+In the case of the first three optional parameters, the specifier must be followed by a number. The value of the argument controlling the reduction of the matrix must be a single character and it's value can be
  + 'y' or 'Y', the code will search for rows and columns that can be united or have only zero entries,
  + 'c' or 'C', it will search for columns that can be united and rows and columns with only zero entries,
  + 'r' or 'R' it will search for rows that can be united and rows and columns with only zero entries.
@@ -99,7 +99,7 @@ Output is shared between the standard output stream (where the actual $L_1$ norm
 
 The program prints here
  + the number of rows and columns of the input matrix as 'rows: r, cols: c', where 'r' and 'c' stand for the number of rows and the number of columns of the input matrix, respectively,
- + Preprocess flag indicating if the matrix is preprocessed,
+ + Matrix reduction flag indicating if the matrix is reduced,
  + a warning if the matrix was transposed,
  + the number of rows the program rearranges and the number of rows for which the program calculates the coefficients without rearranging the rows,
  + the number of initial random vectors for seesaw iteration,
@@ -108,7 +108,7 @@ The program prints here
  + the progress of calculating the $L_1$ norm if it was permitted with the '-DPROGRESS' flag during compilation,
  + the value of the $L_1$ norm or the local bound of a correlation-type Bell expression.
 
-Furthermore, in case the program was not disallowed to preprocess the matrix, the program writes out a warning in case the input matrix is a zero matrix ('This is a zero matrix.') and the performed reduction steps. For instance:
+Furthermore, in case the program was not disallowed to reduce the matrix, the program writes out a warning in case the input matrix is a zero matrix ('This is a zero matrix.') and the performed reduction steps. For instance:
  + 'row 1 entries are zeros.' means the entries of the first row of the matrix are zeros, and that row was deleted.
  + 'col 3 was subtracted from 1' means column 3 was subtracted from column 1, and column 3 was deleted.
  + 'row 5 was added to 1.' means row 5 was added to row 1, and row 5 was deleted.
