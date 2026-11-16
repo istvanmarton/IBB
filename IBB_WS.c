@@ -65,12 +65,12 @@ void fill_vector_S(item_BB* calc_BB, int* lastRows, item_calc* second, unsigned 
 	unsigned int m_fork, m_fork_end, initial_strategy;
 	calc_parallel_parameters(num_of_threads, &level, &m_fork);
 	m_fork_end = 2 * m_fork;
-	if(*thread_index < m_fork_end) { // In the article: if 't < m'
-		initial_strategy = *thread_index; // t <- t
-		level = level + 1; // nb <- l + 1
+	if(*thread_index < m_fork_end) { // In the article: if 'tau < qs'
+		initial_strategy = *thread_index; // J <- tau
+		level = level + 1; // d <- l + 1
 	}
 	else{
-		initial_strategy = *thread_index - m_fork; // In the article: t <- t - m
+		initial_strategy = *thread_index - m_fork; // In the article: J <- tau - (q - 1) s. Here q = 2.
 	}
 	calc_BB[0].level = second->iRows_reduced - *lastRows + level + 1;
 
