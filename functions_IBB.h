@@ -217,7 +217,7 @@ void optional_arguments(item* first, item_calc* second, int* num_of_threads, int
 			}
 		}
 	}
-	printf("Preprocess flag: %c\n", first->stat);
+	printf("Matrix reduction flag: %c\n", first->stat);
 }
 
 void copy_mtx_row(item* first, int* i, int* j){
