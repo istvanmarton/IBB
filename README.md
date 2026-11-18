@@ -1,6 +1,6 @@
 # Calculating the $L_1$ norm of a matrix with the improved branch-and-bound algorithm
 
-This repository accompanies the article "Exact classical bounds of bipartite correlation Bell inequalities using improved branch-and-bound". In this article, we present the calculation of the $L_1$ norm of an $n×m$ matrix. The $L_1$ norm gives the local bound of the bipartite correlation-type Bell expression represented by the given matrix.
+This repository accompanies the article "[Exact classical bounds of bipartite correlation Bell inequalities using improved branch-and-bound](https://arxiv.org/abs/2611.22893)". In this article, we present the calculation of the $L_1$ norm of an $n×m$ matrix. The $L_1$ norm gives the local bound of the bipartite correlation-type Bell expression represented by the given matrix.
 
 Important note: The input matrix must have integer entries. These can be provided either in integer format, such as 31, or scientific format, such as 3.10000000e+01. Providing a non-integer input results in undefined behavior.
 
